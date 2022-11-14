@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2022 
+      Tomcat端口占用报错记录 
       
       
       |
@@ -110,95 +110,149 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Tomcat端口占用报错记录</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2022-11-14 20:50:03
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" title="报错记录">
+                    #报错记录
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>运行Tomcat的时候出现了如下的报错，告诉我1099端口已经被占用了</p>
+<p>error:</p>
+<p>![image-20221112234928956](&#x2F;Users&#x2F;wodediannao&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20221112234928956.png)</p>
+<p>solution:</p>
+<p>还是老解决办法，在terminal输入 lsof -i:1099</p>
+<p>![image-20221112235202871](&#x2F;Users&#x2F;wodediannao&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20221112235202871.png)</p>
+<p>在活动监视器中关掉这一进程就可。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/11/13/task-records-2/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2022-11-14 20:50:03
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" title="报错记录">
+                        #报错记录
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Tomcat端口占用报错记录">
-        <div class="time-m-d">11-14</div>
-        <div class="title">
-          <a href="/2022/11/14/Tomcat%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/">
-            <span>Tomcat端口占用报错记录</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="task_records_2">
-        <div class="time-m-d">11-13</div>
-        <div class="title">
-          <a href="/2022/11/13/task-records-2/">
-            <span>task_records_2</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="Hello,China 1">
-        <div class="time-m-d">11-13</div>
-        <div class="title">
-          <a href="/2022/11/13/Hello-China-1/">
-            <span>Hello,China 1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="task_records_1">
-        <div class="time-m-d">11-12</div>
-        <div class="title">
-          <a href="/2022/11/12/task-records-1/">
-            <span>task_records_1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="搭建博客命令记录">
-        <div class="time-m-d">11-12</div>
-        <div class="title">
-          <a href="/2022/11/12/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/">
-            <span>搭建博客命令记录</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="1045 Favorite Color Stripe">
-        <div class="time-m-d">07-07</div>
-        <div class="title">
-          <a href="/2022/07/07/1045-Favorite-Color-Stripe/">
-            <span>1045 Favorite Color Stripe</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="My New Post">
-        <div class="time-m-d">07-05</div>
-        <div class="title">
-          <a href="/2022/07/05/My-New-Post/">
-            <span>My New Post</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">06-30</div>
-        <div class="title">
-          <a href="/2022/06/30/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src='https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js' onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'xNKHJRaz7RWteB3Yteu4g6HS-gzGzoHsz',
+        appKey: '4NSN54PVhLDNOOEEabv0WR1u',
+        placeholder: 'Welcome!',
+        avatar: 'retro',
+        lang: 'en'
+      })
+    }
+  </script>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -453,6 +507,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Tomcat%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F11%2F14%2FTomcat%25E7%25AB%25AF%25E5%258F%25A3%25E5%258D%25A0%25E7%2594%25A8%25E6%258A%25A5%25E9%2594%2599%25E8%25AE%25B0%25E5%25BD%2595%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/11/14/Tomcat%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
