@@ -11,7 +11,7 @@
   
   <title>
     
-      My New Post 
+      区间DP-密码脱落 
       
       
       |
@@ -155,22 +155,58 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">My New Post</div>
+      <div class="post-title">区间DP-密码脱落</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2022-07-05 11:18:06
+          2023-01-09 14:30:40
         </span>
         
       </div>
       <div class="markdown-body">
-        
+        <p>X星球的考古学家发现了一批古代留下来的密码。</p>
+<p>这些密码是由A、B、C、D 四种植物的种子串成的序列。</p>
+<p>仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。</p>
+<p>由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。</p>
+<p>你的任务是：</p>
+<p>给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>共一行，包含一个由大写字母ABCD构成的字符串，表示现在看到的密码串。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示至少脱落了多少个种子。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>输入字符串长度不超过1000</p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCBA</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABDCDCBABC</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>#include <iostream><br>#include <cstring></p>
+<p>using namespace std;</p>
+<p>const int N &#x3D; 1010;<br>string s;</p>
+<p>int main()<br>{<br>    cin &gt;&gt; s;<br>    int n &#x3D; s.size();<br>    memset(f , 0x3f , sizeof f);</p>
+<pre><code>for(int len = 0 ; len &lt;= n ; len++)
+    for(int l = 0 ; l + len - 1 &lt; n ; l++)
+    &#123;
+        int r = l + len - 1;
+        if(len &lt;= 1) f[l][r] = 0;//长度为1或0就是镜像串
+        else
+        &#123;
+            if(s[l] == s[r]) f[l][r] = min(f[l][r] , f[l + 1][r - 1]);
+            else f[l][r] = min(f[l][r] , min(f[l + 1][r] , f[l][r - 1]) + 1);
+        &#125;
+    &#125;
+
+cout &lt;&lt; f[0][n - 1] &lt;&lt; endl;
+</code></pre>
+<p>}</p>
+
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2022/06/30/hello-world/" target="_self">
+              <a href="/2023/01/08/%E5%8C%BA%E9%97%B4DP1-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -179,13 +215,13 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2022-07-05 11:18:06
+              2023-01-09 14:30:40
             </span>
             
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2022/07/07/1045-Favorite-Color-Stripe/" target="_self">
+              <a href="/2023/01/09/%E5%8F%8C%E5%90%91%E5%8C%BA%E9%97%B4DP-%E6%8A%98%E5%8F%A0%E5%BA%8F%E5%88%97/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -195,6 +231,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-text">输入样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-text">输出样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-text">输入样例2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-text">输出样例2：</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
@@ -490,12 +543,12 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + My%20New%20Post + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F07%2F05%2FMy-New-Post%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E5%8C%BA%E9%97%B4DP-%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD + '&url=' + http%3A%2F%2Fexample.com%2F2023%2F01%2F09%2F%25E5%258C%25BA%25E9%2597%25B4DP-%25E5%25AF%2586%25E7%25A0%2581%25E8%2584%25B1%25E8%2590%25BD%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/07/05/My-New-Post/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2023/01/09/%E5%8C%BA%E9%97%B4DP-%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         

@@ -172,6 +172,14 @@
 <p>$ hexo g -d</p>
 <p>建议：在使用 hexo g 部署之后，可以先使用 hexo s 运行本地站点，然后在浏览器输入地址 <a target="_blank" rel="noopener" href="http://lacolhost:4000/">http://lacolhost:4000/</a> 查看运行结果，检查无误后再使用 hexo d 发布</p>
 <p>（来自<a target="_blank" rel="noopener" href="https://blog.csdn.net/wsmrzx/article/details/81478945%EF%BC%89">https://blog.csdn.net/wsmrzx/article/details/81478945）</a></p>
+<p>MongoCollection collection &#x3D; database.getCollection(“patient”);</p>
+<p>Document myDoc &#x3D; (Document) collection.find(eq(“name”, “张三”)).first();</p>
+<p>System.out.println(myDoc.toJson());</p>
+<p>查询：</p>
+<p>myDoc &#x3D; collection.find(eq(<strong>“i”</strong>, 71)).first(); </p>
+<p>System.out.println(myDoc.toJson());</p>
+<p>更新：</p>
+<p>Document myDoc&#x3D; (Document) collection.updateOne(eq(<strong>“name”</strong>, “”), <strong>new</strong> Document(<strong>“$set”</strong>, <strong>new</strong> Document(<strong>“i”</strong>, 110)));</p>
 
       </div>
       
@@ -255,7 +263,7 @@
     
     <div class="footer-more">
       
-        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2022 Oranges</a>
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
         
     </div>
   
