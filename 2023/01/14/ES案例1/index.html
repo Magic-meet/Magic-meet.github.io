@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2022/6 
+      ES案例1 
       
       
       |
@@ -110,192 +110,150 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2023</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">ES案例1</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2023-01-14 23:00:45
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h3 id="图书网站商品管理案例"><a href="#图书网站商品管理案例" class="headerlink" title="图书网站商品管理案例"></a>图书网站商品管理案例</h3><p>有一个售卖图书的网站，需要为其基于ES构建一个后台系统，提供以下功能：</p>
+<p>（1）对商品信息进行CRUD（增删改查）操作</p>
+<p>（2）执行简单的结构化查询</p>
+<p>（3）可以执行简单的全文检索，以及复杂的phrase（短语）检索</p>
+<p>（4）对于全文检索的结果，可以进行高亮显示</p>
+<p>（5）对数据进行简单的聚合分析</p>
+<h5 id="（1）新建图书索引"><a href="#（1）新建图书索引" class="headerlink" title="（1）新建图书索引"></a>（1）新建图书索引</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PUT /book</span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）新增图书-新增文档"><a href="#（2）新增图书-新增文档" class="headerlink" title="（2）新增图书 :新增文档"></a>（2）新增图书 :新增文档</h5><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PUT /book/_doc/<span class="number">1</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bootstrap开发&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bootstrap是由Twitter推出的一个前台页面开发css框架，是一个非常流行的开发框架，此框架集成了多种页面效果。此开发框架包含了大量的CSS、JS程序代码，可以帮助开发者（尤其是不擅长css页面开发的程序人员）轻松的实现一个css，不受浏览器限制的精美界面css效果。&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;studymodel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;201002&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">38.6</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span><span class="string">&quot;2019-08-25 19:11:35&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pic&quot;</span><span class="punctuation">:</span><span class="string">&quot;group1/M00/00/00/wKhlQFs6RCeAY0pHAAJx5ZjNDEM428.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;bootstrap&quot;</span><span class="punctuation">,</span> <span class="string">&quot;dev&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PUT /book/_doc/<span class="number">2</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;java编程思想&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;java语言是世界第一编程语言，在软件开发领域使用人数最多。&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;studymodel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;201001&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">68.6</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span><span class="string">&quot;2019-08-25 19:11:35&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;pic&quot;</span><span class="punctuation">:</span><span class="string">&quot;group1/M00/00/00/wKhlQFs6RCeAY0pHAAJx5ZjNDEM428.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;java&quot;</span><span class="punctuation">,</span> <span class="string">&quot;dev&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PUT /book/_doc/<span class="number">3</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;name&quot;</span>: <span class="string">&quot;spring开发基础&quot;</span>,</span><br><span class="line"><span class="string">&quot;description&quot;</span>: <span class="string">&quot;spring 在java领域非常流行，java程序员都在用。&quot;</span>,</span><br><span class="line"><span class="string">&quot;studymodel&quot;</span>: <span class="string">&quot;201001&quot;</span>,</span><br><span class="line"><span class="string">&quot;price&quot;</span>:<span class="number">88.6</span>,</span><br><span class="line"><span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-08-24 19:11:35&quot;</span>,</span><br><span class="line"><span class="string">&quot;pic&quot;</span>:<span class="string">&quot;group1/M00/00/00/wKhlQFs6RCeAY0pHAAJx5ZjNDEM428.jpg&quot;</span>,</span><br><span class="line"><span class="string">&quot;tags&quot;</span>: [ <span class="string">&quot;spring&quot;</span>, <span class="string">&quot;java&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/01/13/%E8%AE%A1%E6%95%B0%E7%B1%BBDP-%E6%9D%B0%E6%8B%89%E5%B0%94%E5%BE%B7%E5%92%8C%E5%B7%A8%E5%9E%8B%E8%B1%A1%E6%A3%8B%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2023-01-14 23:00:45
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="ES案例1">
-        <div class="time-m-d">01-14</div>
-        <div class="title">
-          <a href="/2023/01/14/ES%E6%A1%88%E4%BE%8B1/">
-            <span>ES案例1</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="计数类DP-杰拉尔德和巨型象棋（未解决）">
-        <div class="time-m-d">01-13</div>
-        <div class="title">
-          <a href="/2023/01/13/%E8%AE%A1%E6%95%B0%E7%B1%BBDP-%E6%9D%B0%E6%8B%89%E5%B0%94%E5%BE%B7%E5%92%8C%E5%B7%A8%E5%9E%8B%E8%B1%A1%E6%A3%8B%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89/">
-            <span>计数类DP-杰拉尔德和巨型象棋（未解决）</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="计数类DP-整数划分">
-        <div class="time-m-d">01-11</div>
-        <div class="title">
-          <a href="/2023/01/11/%E8%AE%A1%E6%95%B0%E7%B1%BBDP-%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/">
-            <span>计数类DP-整数划分</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="区间DP- Sue的小球">
-        <div class="time-m-d">01-10</div>
-        <div class="title">
-          <a href="/2023/01/10/%E5%8C%BA%E9%97%B4DP-Sue%E7%9A%84%E5%B0%8F%E7%90%83/">
-            <span>区间DP- Sue的小球</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="双向区间DP-折叠序列">
-        <div class="time-m-d">01-09</div>
-        <div class="title">
-          <a href="/2023/01/09/%E5%8F%8C%E5%90%91%E5%8C%BA%E9%97%B4DP-%E6%8A%98%E5%8F%A0%E5%BA%8F%E5%88%97/">
-            <span>双向区间DP-折叠序列</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="区间DP-密码脱落">
-        <div class="time-m-d">01-09</div>
-        <div class="title">
-          <a href="/2023/01/09/%E5%8C%BA%E9%97%B4DP-%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/">
-            <span>区间DP-密码脱落</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="区间DP1-石子合并">
-        <div class="time-m-d">01-08</div>
-        <div class="title">
-          <a href="/2023/01/08/%E5%8C%BA%E9%97%B4DP1-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">
-            <span>区间DP1-石子合并</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="线性DP3-杨老师的照相排列">
-        <div class="time-m-d">01-07</div>
-        <div class="title">
-          <a href="/2023/01/07/%E7%BA%BF%E6%80%A7DP3-%E6%9D%A8%E8%80%81%E5%B8%88%E7%9A%84%E7%85%A7%E7%9B%B8%E6%8E%92%E5%88%97/">
-            <span>线性DP3-杨老师的照相排列</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="线性DP2-骰子的点数">
-        <div class="time-m-d">01-06</div>
-        <div class="title">
-          <a href="/2023/01/06/%E7%BA%BF%E6%80%A7DP2-%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/">
-            <span>线性DP2-骰子的点数</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="线性DP1-礼物的最大价值">
-        <div class="time-m-d">01-05</div>
-        <div class="title">
-          <a href="/2023/01/05/%E7%BA%BF%E6%80%A7DP1-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/">
-            <span>线性DP1-礼物的最大价值</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
-        </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
       
-      <div class="post-item" title="Tomcat端口占用报错记录">
-        <div class="time-m-d">11-14</div>
-        <div class="title">
-          <a href="/2022/11/14/Tomcat%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/">
-            <span>Tomcat端口占用报错记录</span>
-          </a>
-        </div>
-      </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B9%A6%E7%BD%91%E7%AB%99%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B"><span class="toc-text">图书网站商品管理案例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E5%9B%BE%E4%B9%A6%E7%B4%A2%E5%BC%95"><span class="toc-text">（1）新建图书索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%96%B0%E5%A2%9E%E5%9B%BE%E4%B9%A6-%E6%96%B0%E5%A2%9E%E6%96%87%E6%A1%A3"><span class="toc-text">（2）新增图书 :新增文档</span></a></li></ol></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="task_records_2">
-        <div class="time-m-d">11-13</div>
-        <div class="title">
-          <a href="/2022/11/13/task-records-2/">
-            <span>task_records_2</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello,China 1">
-        <div class="time-m-d">11-13</div>
-        <div class="title">
-          <a href="/2022/11/13/Hello-China-1/">
-            <span>Hello,China 1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="task_records_1">
-        <div class="time-m-d">11-12</div>
-        <div class="title">
-          <a href="/2022/11/12/task-records-1/">
-            <span>task_records_1</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="搭建博客命令记录">
-        <div class="time-m-d">11-12</div>
-        <div class="title">
-          <a href="/2022/11/12/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/">
-            <span>搭建博客命令记录</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="1045 Favorite Color Stripe">
-        <div class="time-m-d">07-07</div>
-        <div class="title">
-          <a href="/2022/07/07/1045-Favorite-Color-Stripe/">
-            <span>1045 Favorite Color Stripe</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="My New Post">
-        <div class="time-m-d">07-05</div>
-        <div class="title">
-          <a href="/2022/07/05/My-New-Post/">
-            <span>My New Post</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">06-30</div>
-        <div class="title">
-          <a href="/2022/06/30/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src='https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js' onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'xNKHJRaz7RWteB3Yteu4g6HS-gzGzoHsz',
+        appKey: '4NSN54PVhLDNOOEEabv0WR1u',
+        placeholder: 'Welcome!',
+        avatar: 'retro',
+        lang: 'en'
+      })
+    }
+  </script>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -550,6 +508,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + ES%E6%A1%88%E4%BE%8B1 + '&url=' + http%3A%2F%2Fexample.com%2F2023%2F01%2F14%2FES%25E6%25A1%2588%25E4%25BE%258B1%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2023/01/14/ES%E6%A1%88%E4%BE%8B1/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
